@@ -54,13 +54,17 @@ The dataset contains personal records for approximately 9,000 passengers, includ
 
 ## 📁 File Structure
 ```
-├── Spaceship Titanic.ipynb      # Main Jupyter Notebook
-├── Untitled Folder/
-│   ├── train.csv                # Training data
-│   └── test.csv                 # Test data for submission
-├── submission.csv               # Generated submission file
-├── Spaceship_titanic_model.pkl  # Saved trained model
-└── README.md                    # Project documentation
+├── spaceship-titanic/             # Data folder 
+│   ├── train.csv                  # Training data
+│   └── test.csv                   # Test data for submission
+├── LICENSE                        # Project license
+├── README.md                      # This file - Project documentation
+├── Spaceship Titanic.ipynb        # Main Jupyter Notebook with complete analysis
+├── Spaceship_titanic_model.pkl    # Saved trained Logistic Regression model
+├── bash.bat                       # Bash/Batch script for automation
+├── requirements.txt               # Python dependencies
+├── spaceship_titanic_documentation.docx  # Detailed project documentation
+└── sub.csv                        # Final submission file for Kaggle
 ```
 
 ## 🚀 Usage
@@ -68,14 +72,14 @@ The dataset contains personal records for approximately 9,000 passengers, includ
 ### Prerequisites
 Ensure you have the necessary libraries installed:
 ```bash
-pip install pandas numpy matplotlib seaborn scikit-learn
+pip install -r requirements.txt
 ```
 
 ### Running the Notebook
 1. Open `Spaceship Titanic.ipynb` in Jupyter Notebook or Jupyter Lab.
 2. Run all cells sequentially.
 3. The notebook will automatically generate:
-   - `submission.csv`: Ready for Kaggle submission.
+   - `sub.csv`: Ready for Kaggle submission.
    - `Spaceship_titanic_model.pkl`: Serialized model for future use.
 
 ### Key Code Snippets
@@ -93,9 +97,28 @@ grid_search.fit(x_train, y_train)
 best_model = grid_search.best_estimator_
 ```
 
+### Using the Saved Model
+```python
+import pickle
+
+# Load the trained model
+with open('Spaceship_titanic_model.pkl', 'rb') as file:
+    model = pickle.load(file)
+
+# Make predictions
+predictions = model.predict(new_data)
+```
+
 ## 📝 Notes
 - **Column Alignment**: A crucial step in the preprocessing of the test set involves reindexing columns to match the training set exactly (`test_df.reindex(columns=x_train.columns, fill_value=0)`), ensuring compatibility during prediction.
 - **Model Persistence**: The final model is saved using `pickle` for deployment or future inference without retraining.
+- **Data Location**: Training and test data are stored in the `spaceship-titanic/` folder.
 
 ## 📄 License
-This project is for educational purposes & also protected under MIT License.
+This project is for educational purposes & protected under MIT license.
+
+## 🤝 Contributing
+Feel free to fork this repository and submit pull requests for any improvements or suggestions.
+
+## 📧 Contact
+For questions or suggestions, please open an issue in this repository.
