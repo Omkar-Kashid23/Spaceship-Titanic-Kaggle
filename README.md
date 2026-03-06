@@ -115,7 +115,7 @@ predictions = model.predict(new_data)
 - **Data Location**: Training and test data are stored in the `spaceship-titanic/` folder.
 
 ## 📄 License
-This project is for educational purposes & protected under MIT license.
+This project is for educational purposes & protected under Apache License.
 
 ## 🤝 Contributing
 Feel free to fork this repository and submit pull requests for any improvements or suggestions.
